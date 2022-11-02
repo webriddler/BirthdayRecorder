@@ -61,12 +61,12 @@ let data = [];
       document.getElementById('displayEmoji').innerHTML = "🎂 🎂 🎂";
       document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:red;' onclick='deleteBth("+i+");' > 🎂 "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
     }
-    else if((date.getMonth() == today.getMonth()) && (date.getDate() > today.getDate()))
+    else if((date.getMonth() == today.getMonth()) && (date.getDate() < today.getDate()))
     {
-      document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
+      document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:grey;color:grey'  onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
     }
     else{
-      document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:grey;color:grey' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
+      document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
     }
 
      } 
