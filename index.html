@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jura&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  </head>
+
+  <style type="text/css">
+    body{
+      font-family: Roboto;
+    }
+    .badge{
+        padding: 13px;
+        font-size: 14px;
+        font-family: Arial;
+        margin: 5.5px 4.5px;
+        border: solid 1px #0366d8;
+        color: #0366d8;
+      }
+  </style>
+
+  <body>
+
+    <div id="BirthdayDisplay" class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Who's Birthday</a></li>
+          <li class="breadcrumb-item active">
+            <a onclick="addBirthday();" href="#" style="text-decoration: none;" >One more</a></li>
+        </ol>
+      </nav>
+    <div class="py-2 my-5 text-center">
+    <div class="d-block mx-auto mb-1 fs-1" id="displayEmoji"></div>
+    <h1 class="display-5 fw-bold mb-4" id="birthday_guy"></h1>
+    <div class="col-lg-12 mx-auto">
+      <p class="lead" id="birthdays">
+        
+      </p>
+      
+    </div>
+  </div>
+</div>
+
+  <div id="addBirthdayPage" class="container col-xl-10 col-xxl-8 px-4 py-5" style="display:none;">
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">
+      <a onclick="showBirthday();" href="#" style="text-decoration: none;" >Who's Birthday</a></li>
+    <li class="breadcrumb-item">One more</a></li>
+    
+  </ol>
+</nav>
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3" style="font-family: Jura;">
+          💫Whose turn ...
+        </h1>
+        <p class="col-lg-10 fs-5">Let's keep a record of those who care about you the most. Maintaining a good manner record of birthdays never be so hard.</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form id="birthdayForm" onsubmit="addData();" class="p-4 p-md-5 border rounded-3 bg-light">
+          <div class="form-floating mb-3">
+            <input required type="text" class="form-control" id="guyname" placeholder="Birthday Guy Name" maxlength="10">
+            <label for="guyname">Birthday Guy Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input required type="date" class="form-control" id="guyBirthday" placeholder="Birthday Date">
+            <label for="guyBirthday">Birthday Date</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😀">
+            <label class="form-check-label" for="emojiData">😀</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😉">
+            <label class="form-check-label" for="emojiData">😉</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😁">
+            <label class="form-check-label" for="emojiData">😁</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😜">
+            <label class="form-check-label" for="emojiData">😜</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😎">
+            <label class="form-check-label" for="emojiData">😎</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="🤠">
+            <label class="form-check-label" for="emojiData">🤠</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="🤓">
+            <label class="form-check-label" for="emojiData">🤓</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emojiData" value="😍">
+            <label class="form-check-label" for="emojiData">😍</label>
+          </div>
+
+
+          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Add to wishlist</button>
+          <hr class="my-4">
+          <small class="text-muted">
+            Your content is only visible to you, remember it is device specific.
+          </small>
+        </form>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript" src="main.js"></script>
+
+  
+
+
+
+  </body>
+</html>
