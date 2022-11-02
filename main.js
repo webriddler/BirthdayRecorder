@@ -38,7 +38,7 @@ let data = [];
       document.getElementById('birthday_guy').innerHTML = "Happy Birthday! "+birthdays[i]['name'];
       break;
     }
-    else if (date.getMonth() == today.getMonth()) {
+    else if ((date.getMonth() == today.getMonth()) && (date.getDate() > today.getDate())) {
       document.getElementById('displayEmoji').innerHTML = "💫 💫 💫";
       document.getElementById('birthday_guy').innerHTML = date.getDate() - today.getDate()+ " days remain for " + birthdays[i]['name'] + "'s Birthday";
       break;
@@ -61,8 +61,12 @@ let data = [];
       document.getElementById('displayEmoji').innerHTML = "🎂 🎂 🎂";
       document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:red;' onclick='deleteBth("+i+");' > 🎂 "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
     }
-    else{
+    else if((date.getMonth() == today.getMonth()) && (date.getDate() > today.getDate()))
+    {
       document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
+    }
+    else{
+      document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:grey;color:grey' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>";
     }
 
      } 
