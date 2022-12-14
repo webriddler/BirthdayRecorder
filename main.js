@@ -3,11 +3,27 @@
   document.getElementById('displayEmoji').innerHTML = "⚠️ ⚠️ ⚠️";
   document.getElementById('birthday_guy').innerHTML = "Why your collection is empty!";
   
-let data = [];
+  let data = [];
+  let birthdays = [];
+  
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
     'Sep','Oct','Nov','Dec'];
-  const birthdays = JSON.parse(localStorage.getItem("birthdaysData"));
+  const birthdays_all = JSON.parse(localStorage.getItem("birthdaysData"));
+  const today = new Date;
   
+
+
+  for (i = 0; i<birthdays_all.length; i++){
+    var date = new Date(birthdays_all[i]['date']);
+    if((date.getMonth() >= today.getMonth()) && (date.getDate() >= today.getDate()))
+    {
+        birthdays.push(birthdays_all[i])
+    }
+  }
+  localStorage.setItem("birthdaysData",JSON.stringify(birthdays));
+
+
+
   if(birthdays){
     data = birthdays;
   }
@@ -17,7 +33,7 @@ let data = [];
   var emoji = document.forms['birthdayForm'].elements['emojiData'].value;
   data.push({name: name,date: bthDate,emoji: emoji});
   localStorage.setItem("birthdaysData",JSON.stringify(data));
-  location.reload();
+  window.location.reload();
   }
 
   // var date = new Date('2002-02-20')
@@ -28,11 +44,10 @@ let data = [];
     return ad - bd;
   });
 
-  
+ 
   for(i=0; i<birthdays.length;i++)
   {
-    var today = new Date;
-    var date = new Date(birthdays[i]['date']);
+    var date = new Date(birthdays_all[i]['date']);
     if (date.getDate() == today.getDate() && date.getMonth() == today.getMonth()){
       document.getElementById('displayEmoji').innerHTML = "🎂 🎂 🎂";
       document.getElementById('birthday_guy').innerHTML = "Happy Birthday! "+birthdays[i]['name'];
@@ -53,8 +68,7 @@ let data = [];
 
   for(i=0; i<birthdays.length;i++)
   {
-    var today = new Date;
-    var date = new Date(birthdays[i]['date']);
+    var date = new Date(birthdays_all[i]['date']);
     if (date.getMonth() >= today.getMonth()) {
 
     if (date.getDate() == today.getDate() && date.getMonth() == today.getMonth()){
@@ -74,9 +88,7 @@ let data = [];
 
   for(i=0; i<birthdays.length;i++)
   {
-    var today = new Date;
-    var date = new Date(birthdays[i]['date']);
-
+    var date = new Date(birthdays_all[i]['date']);
   if (date.getMonth() < today.getMonth()) {
       document.getElementById('birthdays').innerHTML += "<span class='badge rounded-pill' style='border-color:grey;color:grey' onclick='deleteBth("+i+");' >"+birthdays[i]['emoji']+" "+birthdays[i]['name']+" | "+date.getDate()+" "+months[date.getMonth()]+"</span>"
     }
